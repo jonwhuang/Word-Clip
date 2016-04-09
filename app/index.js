@@ -1,4 +1,4 @@
-var app = angular.module("4564", ["ngRoute"])
+var app = angular.module("4564", ["ng" ,"ngRoute", "chart.js"])
 
 app.config(function($routeProvider){
   $routeProvider.
@@ -6,6 +6,7 @@ app.config(function($routeProvider){
       templateUrl: 'templates/index.html'
     }).
     when('/chart', {
-      templateUrl: 'templates/chart.html'
+      templateUrl: 'templates/chart.html',
+      controller: "chartCtrl"
     });
 })
