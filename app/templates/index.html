@@ -1,10 +1,15 @@
-
+<canvas id="line" class="chart chart-line" chart-data="data"
+  chart-labels="labels" chart-legend="true" chart-series="series"
+  chart-click="onClick" >
+</canvas>
   <div>
     <form name='myAudio'>
       <label>Mp3 Link</label>
-      <input type="text" id="audioLink" size="100"></br>
-      <input type="button" class='btn btn-primary' value="Upload Link" onclick="audioExtraction()"/></br>
+      <input type="text" id="audioLink" size="100">
+      <input type="button" id='uploadLink'class='btn btn-primary' value="Upload Link" onclick="audioExtraction()"/>
     </form>
-    <button class='btn btn-primary'>Upload File</button><br>
-    <button class='btn btn-primary'>Record Live</button><br>
+    <div class='center-block'>
+      <button class='btn btn-primary' id='uploadFile'>Upload File</button>
+      <button class='btn btn-primary' id='recordFile'>Record Live</button><br>
+    </div>
   </div>
