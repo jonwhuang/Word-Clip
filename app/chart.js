@@ -1,4 +1,4 @@
-app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlService', function ($scope, $http, $location, $timeout, urlService) {
+app.controller("chartCtrl", ['$scope', '$http', 'urlService', function ($scope, $http, urlService) {
 
   $scope.audioUrl = urlService.audioUrl;
 
@@ -6,18 +6,11 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
     urlService.audioUrl = $scope.audioUrl;
   })
 
-  $scope.background = false;
-    console.log($scope.background);
-
-  // $scope.resultText = [];
-
   // $scope.$on('$routeChangeSuccess', function () {
   //   testSpeechRecognition();
   // });
 
-  // $scope.labels = [];
 var labelCounter = 8;
-  // $scope.data = [];
 
   $scope.labels = [0,1,2,3,4,5,6,7],
 
@@ -47,11 +40,6 @@ var labelCounter = 8;
 
   $scope.onHover = function(points) {
     if (points.length > 0) {
-        // console.log('Point', points[0].value);
-        // console.log(points[0].label);
-      // } else {
-        // console.log('No point');
-        // debugger;
         $('#result')[0].innerHTML = $scope.resultText[points[0].label];
         $scope.currentPoint = points[0].value.toString().slice(0,5)
       };
@@ -122,9 +110,6 @@ var labelCounter = 8;
         });
       $scope.resultText.push(updated_string);
       $scope.data[0].push(response.aggregate.score);
-      // console.log(response);
-      // console.log('T: ' + $scope.resultText);
-
     }).error(function(response){
       console.log("Error: " + response);
     });

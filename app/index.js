@@ -19,10 +19,6 @@ app.controller('homeCtrl', ['$scope', 'urlService', function($scope, urlService)
   $scope.$watch('audioUrl', function(){
     urlService.audioUrl = $scope.audioUrl;
   })
-
-  $scope.background = true;
-    console.log($scope.background);
-
 }]);
 
 app.service('urlService', function(){
