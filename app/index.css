@@ -17,6 +17,10 @@ img.home-page {
   color: white;
 }
 
+input {
+  border-radius: 5px;
+}
+
 #averageScore{
   border-radius: 50%;
   width: 50px;
