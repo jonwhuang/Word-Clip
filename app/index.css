@@ -1,5 +1,24 @@
+img.home-page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -15;
+  margin-top: -20px;
+}
 .line-legend li .line-legend-text {
   position: relative;
+}
+
+.landing-page {
+  margin-top: 20%;
+}
+
+.landing-page label {
+  color: white;
+}
+
+input {
+  border-radius: 5px;
 }
 
 #averageScore{
@@ -39,6 +58,6 @@
 }
 
 .panel-body {
-  background-color: #d1d1e0;
+  /*background-color: #d1d1e0;*/
 }
 
