@@ -18,3 +18,4 @@ app.controller("chartCtrl", function ($scope) {
   $scope.average = avg
 
 });
+
