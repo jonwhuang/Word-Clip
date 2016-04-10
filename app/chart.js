@@ -27,9 +27,9 @@ $scope.chartOptions = {
   for(var i = 0; i < avergeArray.length; i++) {
     total += avergeArray[i];
   }
-  var avg = total / avergeArray.length
-  $scope.average = avg
-  if (avg>0){
+  var avg = total / avergeArray.length;
+  $scope.average = avg.toString().slice(3,5) + '%';
+  if (avg >= 0){
     $scope.sentiment = 'positive';
     $('#averageScore').css('background-color','');
   } else{
