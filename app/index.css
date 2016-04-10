@@ -2,7 +2,21 @@
   position: relative;
 }
 
-.text-avg {
+#averageScore{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 10%;
+  margin: 50px;
+  text-align: center;
+}
+
+#averageScore div{
+  text-align: center;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+.text-score {
   font-size: 18px;
 }
 
