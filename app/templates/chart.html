@@ -1,8 +1,14 @@
-<div class="col-lg-6 col-sm-12 ng-scope" id="line-chart">
-  <div class="panel panel-default">
-    <div class="panel-heading"></div>
+<div class="row ng-scope" id="line-chart">
+  <div class="panel panel-default col-lg-6">
     <div class='panel-body'>
       <div class="chart-container">
+
+        <form name='myAudio'>
+          <label>Audio URL</label>
+          <input type="text" id="inputLink" size="40" ng-model="audioUrl"/>
+          <input type="button" value="Upload Link" id='uploadLink' ng-model="audioUrl" class='btn btn-primary' ng-click="addMoreAudio()"/>
+        </form>
+
         <canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-data="data" chart-result-text='resultText'
         chart-labels="labels" chart-legend="true" chart-series="series"
         chart-click="onClick" chart-hover = "onHover">
@@ -12,32 +18,8 @@
         </div>
       </div>
     </div>
-
   </div>
-  <div class='col-lg-12 col-sm-12 ng-scope'>
+  <div class='col-lg-6'>
     <div id="result"></div>
-    <div class='center-block'>
   </div>
-
-  <div class='col-lg-6 col-sm-12 ng-scope'>
-  <div class="text-center text-score">Average:
-  <div id='averageScore' class='img-rounded text-center text-score'>
-    <div>
-      {{average}} {{sentiment}}
-    </div>
-  </div>
-  <div>
-
-  <form name='myAudio'>
-    <label>Audio Link</label>
-    <input type="text" id="inputLink" size="100" ng-model="audioUrl"/></br>
-    <input type="button" value="Upload Link" id='uploadLink' ng-model="audioUrl" class='btn btn-primary' ng-click="addMoreAudio()"/>
-  </form>
-
-  <div id="result-text">
-    <div ng-repeat="text in resultText">
-      {{ text }}
-    </div>
-  </div>
-
 </div>
