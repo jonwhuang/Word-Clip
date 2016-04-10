@@ -2,9 +2,12 @@
   chart-labels="labels" chart-legend="true" chart-series="series"
   chart-click="onClick" >
 </canvas>
+  <div id='averageScore' class='img-rounded bg-success text-center'>
+  {{average}}
+  </div>
   <div>
     <form name='myAudio'>
-      <label>Mp3 Link</label>
+      <label>Audio Link</label>
       <input type="text" id="audioLink" size="100">
       <input type="button" id='uploadLink'class='btn btn-primary' value="Upload Link" onclick="audioExtraction()"/>
     </form>
