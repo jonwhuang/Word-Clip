@@ -8,4 +8,7 @@ app.controller("chartCtrl", function ($scope) {
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
   };
+
 });
+
+
