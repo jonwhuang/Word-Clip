@@ -1,6 +1,10 @@
 app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
 
-  $scope.audioUrl = "https://www.havenondemand.com/sample-content/videos/hpnext.mp4"
+  $scope.audioUrl = "https://www.havenondemand.com/sample-content/videos/hpnext.mp4";
+
+  $scope.resultText = ['...', '!!!'];
+
+  $scope.sentimentValues = ['...', '???'];
 
   // $scope.labels = [];
 
@@ -32,36 +36,55 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', functio
       $location.path('/chart');
     }, 3000);
 
-    $.ajax({
-        method: 'post',
-        url: "https://api.havenondemand.com/1/api/async/recognizespeech/v1",
-        data: {url:$scope.audioUrl,apikey:"4b212618-5f67-4f0d-b63a-45233c145396"}
-    }).done(function(response){
+    $http({
+      method: 'GET',
+      url: "https://api.havenondemand.com/1/api/async/recognizespeech/v1",
+      params: {url:$scope.audioUrl, apikey:"4b212618-5f67-4f0d-b63a-45233c145396"}
+    })
+      .error(function(response){
+        console.log("Error: " + response);
+      })
+      .success(function(response){
         console.log(response.jobID);
         console.log('Making Job Request..')
-        $.ajax({
-            method: 'get',
-            url: "https://api.havenondemand.com/1/job/result/" + response.jobID +"?apikey=4b212618-5f67-4f0d-b63a-45233c145396"
-        }).done(function(response){
+        $http({
+            method: 'GET',
+            url: "https://api.havenondemand.com/1/job/result/" + response.jobID,
+            params: {apikey: "4b212618-5f67-4f0d-b63a-45233c145396"}
+        }).success(function(response){
             console.log("Received job request..now pinging sentiment...")
             console.log(response);
             var string = response.actions[0].result.document[0].content;
-            $('#result').html("String: "+string);
-            $.ajax({
-                method: 'post',
-                url: "https://api.havenondemand.com/1/api/sync/analyzesentiment/v1",
-                data: {apikey:'4b212618-5f67-4f0d-b63a-45233c145396',language:'eng',text:string}
-            }).done(function(response){
-                $('#result').append("<br>Sentiment: " + response.aggregate.score)
-                console.log(response);
-
-            });
+            // $('#result').html("String: "+string);
+            $scope.resultText.push(string);
+            calculateSentiment(string);
         });
     })
   }
 
+  var calculateSentiment = function(string){
+    $http({
+      method: 'POST',
+      url: "https://api.havenondemand.com/1/api/sync/analyzesentiment/v1",
+      params: {apikey:'4b212618-5f67-4f0d-b63a-45233c145396',language:'eng',text:string}
+    }).success(function(response){
+      // $('#result').append("<br>Sentiment: " + response.aggregate.score)
+      $scope.sentimentValues.push(response.aggregate.score);
+      console.log(response);
+      console.log('S: ' + $scope.sentimentValues);
+      console.log('T: ' + $scope.resultText);
+    }).error(function(response){
+      console.log("Error: " + response);
+    });
+  }
 
 
+  // $scope.$watchCollection('resultText', function(newVal) {
+  //   $scope.$apply();
+  // });
 
+  // $scope.$watchCollection('sentimentValues', function(newVal){
+  //   $scope.$apply();
+  // });
 
 }]);
