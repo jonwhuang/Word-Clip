@@ -16,8 +16,10 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
 
   // $scope.data = [];
 
-  $scope.labels = [":10",":20",":30",":40",":50","1:00", "1:10","1:20","1:30"],
+  $scope.shit = ["test","test","test","test","test","test","test","test","test","test"]
 
+  $scope.labels = [":10",":20",":30",":40",":50","1:00", "1:10","1:20","1:30"],
+  // $scope.lables.forEach
   $scope.series = ["Conversation"]
 
   $scope.data = [
@@ -29,6 +31,7 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
   }
 
   $scope.onHover = function(points) {
+    console.log(points)
     if (points.length > 0) {
         // console.log('Point', points[0].value);
         // console.log(points[0].label);
@@ -74,7 +77,6 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
         console.log("Error: " + response);
       })
       .success(function(response){
-        console.log(response.jobID);
         console.log('Making Job Request..')
         $http({
             method: 'GET',
