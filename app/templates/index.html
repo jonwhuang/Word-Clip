@@ -7,12 +7,17 @@
         chart-labels="labels" chart-legend="true" chart-series="series"
         chart-click="onClick" chart-hover = "onHover">
         </canvas>
+        <div class="text-center text-score" ng-if="currentPoint">Score:
+          <span ng-class="{red: currentPoint <= -0.2, green: currentPoint >= 0.2, yellow: -0.2 < currentPoint > 0.2  }">{{currentPoint}}</span>
+          </div>
+
       </div>
     </div>
   </div>
 </div>
 <div class='col-lg-6 col-sm-12 ng-scope'>
-  <div id='averageScore' class='img-rounded bg-success text-center'>
+  <div class="text-center text-score">Average:
+  <div id='averageScore' class='img-rounded text-center text-score'>
     <div>
       {{average}} {{sentiment}}
     </div>

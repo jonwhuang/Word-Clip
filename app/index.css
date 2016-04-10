@@ -16,3 +16,29 @@
   margin-left: -25px;
   margin-top: -25px;
 }
+.text-score {
+  font-size: 18px;
+}
+
+.yellow {
+  font-size: 20px;
+  color: #cccc00;
+  text-shadow: #000 0px 0px 1px;
+}
+
+.red {
+  font-size: 20px;
+  color: red;
+  text-shadow: #000 0px 0px 1px;
+}
+
+.green {
+  font-size: 20px;
+  color: green;
+  text-shadow: #000 0px 0px 1px;
+}
+
+.panel-body {
+  background-color: #d1d1e0;
+}
+
