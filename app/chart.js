@@ -44,12 +44,12 @@ var labelCounter = 8;
   };
 
 
-  var avergeArray = $scope.data[0]
+  var averageArray = $scope.data[0]
   var total = 0;
-  for(var i = 0; i < avergeArray.length; i++) {
-    total += avergeArray[i];
+  for(var i = 0; i < averageArray.length; i++) {
+    total += averageArray[i];
   }
-  var avg = total / avergeArray.length
+  var avg = total / averageArray.length
   $scope.average = Math.round(avg*100)/100
   // $scope.average = avg.toString().slice(3,5) + '%';
   if (avg >= 0){
