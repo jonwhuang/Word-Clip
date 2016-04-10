@@ -1,10 +1,16 @@
-app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
+app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlService', function ($scope, $http, $location, $timeout, urlService) {
 
-  $scope.audioUrl = "https://www.havenondemand.com/sample-content/videos/hpnext.mp4";
+  $scope.audioUrl = urlService.audioUrl;
 
-  $scope.resultText = ['...', '!!!'];
+  $scope.$watch('audioUrl', function(){
+    urlService.audioUrl = $scope.audioUrl;
+  })
 
-  $scope.sentimentValues = ['...', '???'];
+  $scope.resultText = [];
+
+  $scope.$on('$routeChangeSuccess', function () {
+    testSpeechRecognition();
+  });
 
   // $scope.labels = [];
 
@@ -31,12 +37,12 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', functio
   var avg = total / avergeArray.length
   $scope.average = Math.round(avg*100)/100
 
-  $scope.testSpeechRecognition = function(){
-    console.log($scope.audioUrl);
+  $scope.addMoreAudio = function(){
+    testSpeechRecognition();
+  }
 
-    $timeout(function(){
-      $location.path('/chart');
-    }, 3000);
+  var testSpeechRecognition = function(){
+    console.log($scope.audioUrl);
 
     $http({
       method: 'GET',
@@ -57,7 +63,7 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', functio
             console.log("Received job request..now pinging sentiment...")
             console.log(response);
             var string = response.actions[0].result.document[0].content;
-            // $('#result').html("String: "+string);
+            $scope.labels.push("1:40");
             $scope.resultText.push(string);
             calculateSentiment(string);
         });
@@ -70,23 +76,12 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', functio
       url: "https://api.havenondemand.com/1/api/sync/analyzesentiment/v1",
       params: {apikey:'4b212618-5f67-4f0d-b63a-45233c145396',language:'eng',text:string}
     }).success(function(response){
-      // $('#result').append("<br>Sentiment: " + response.aggregate.score)
-      $scope.sentimentValues.push(response.aggregate.score);
+      $scope.data[0].push(response.aggregate.score);
       console.log(response);
-      console.log('S: ' + $scope.sentimentValues);
       console.log('T: ' + $scope.resultText);
     }).error(function(response){
       console.log("Error: " + response);
     });
   }
-
-
-  // $scope.$watchCollection('resultText', function(newVal) {
-  //   $scope.$apply();
-  // });
-
-  // $scope.$watchCollection('sentimentValues', function(newVal){
-  //   $scope.$apply();
-  // });
 
 }]);

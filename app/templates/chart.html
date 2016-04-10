@@ -6,26 +6,26 @@
         <canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-data="data"
         chart-labels="labels" chart-legend="true" chart-series="series"
         chart-click="onClick" chart-hover = "onHover">
-      </canvas>
+        </canvas>
 
-      <div class="text-center text-avg">Avg:
-        <span ng-class="{red: average <= -0.2, green: average >= 0.2, yellow: -0.2 < average > 0.2  }">{{average}}</span>
-      </div> 
+        <div class="text-center text-avg">Avg:
+          <span ng-class="{red: average <= -0.2, green: average >= 0.2, yellow: -0.2 < average > 0.2  }">{{average}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <form name='myAudio'>
+    <label>Audio Link</label>
+    <input type="text" id="inputLink" size="100" ng-model="audioUrl"/></br>
+    <input type="button" value="Upload Link" id='uploadLink' ng-model="audioUrl" class='btn btn-primary' ng-click="addMoreAudio()"/>
+  </form>
+
+  <div id="result-text">
+    <div ng-repeat="text in resultText">
+      {{ text }}
     </div>
   </div>
 
-</div>
-
-<div id="result-text">
-  <div ng-repeat="text in resultText">
-    {{ text }}
-  </div>
-</div>
-
-<div id="result-sentiment">
-  Sentiment Values:
-  <div ng-repeat ="sentiment in sentimentValues">
-    {{ sentiment }}
-  </div>
-</div>
 </div>
