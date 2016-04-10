@@ -8,4 +8,13 @@ app.controller("chartCtrl", function ($scope) {
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
   };
+
+  var avergeArray = $scope.data[0]
+  var total = 0;
+  for(var i = 0; i < avergeArray.length; i++) {
+    total += avergeArray[i];
+  }
+  var avg = total / avergeArray.length
+  $scope.average = avg
+
 });
