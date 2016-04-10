@@ -1,4 +1,4 @@
-var app = angular.module("4564", ["ng" ,"ngRoute", "chart.js"])
+var app = angular.module("4564", ["ng" ,"ngRoute", "chart.js", 'ngFileUpload'])
 
 app.config(function($routeProvider){
   $routeProvider.
@@ -29,4 +29,9 @@ app.service('urlService', function(){
   this.getAudioUrl = function(){
     return self.audioUrl
   }
+})
+
+app.service('uploadService', function(){
+  var self = this;
+  this.audioFile="";
 })

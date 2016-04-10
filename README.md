@@ -10,6 +10,7 @@ Studies have proven that words can subconsciously affect people.
 There is also a lot of [anecdotal evidence and self-help topics](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=how%20to%20check%20how%20your%20words%20affect%20others) that say that the choice of words also affects the speaker's perception/outlook in life.
 
 The goal of our tool is to help people: 
+
 - improve themselves by thinking of how positive or negative their word choices are, and think about better wording.
 - stop unintentionally offending others and/or giving a negative impression to others.
 
