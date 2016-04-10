@@ -21,10 +21,21 @@
         <div class="text-center text-score" ng-if="currentPoint">Score:
           <span ng-class="{red: currentPoint <= -0.2, green: currentPoint >= 0.2, yellow: -0.2 < currentPoint > 0.2  }">{{currentPoint}}</span>
         </div>
+
+        <div id="result"></div>
       </div>
     </div>
   </div>
-  <div class='col-lg-6'>
-    <div id="result"></div>
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class='panel-heading'>
+        <h4>Transcript</h4>
+      </div>
+      <div class='panel-body'>
+        <div id="transcript">
+          {{ sampleText }}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
