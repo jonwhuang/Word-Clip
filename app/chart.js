@@ -1,5 +1,7 @@
 app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
 
+  $scope.audioUrl = "https://www.havenondemand.com/sample-content/videos/hpnext.mp4"
+
   // $scope.labels = [];
 
   // $scope.data = [];
@@ -24,8 +26,7 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', functio
   $scope.average = avg
 
   $scope.testSpeechRecognition = function(){
-    audio_url = document.getElementById('inputLink').value;
-    console.log(audio_url);
+    console.log($scope.audioUrl);
 
     $timeout(function(){
       $location.path('/chart');
@@ -34,7 +35,7 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', functio
     $.ajax({
         method: 'post',
         url: "https://api.havenondemand.com/1/api/async/recognizespeech/v1",
-        data: {url:audio_url,apikey:"4b212618-5f67-4f0d-b63a-45233c145396"}
+        data: {url:$scope.audioUrl,apikey:"4b212618-5f67-4f0d-b63a-45233c145396"}
     }).done(function(response){
         console.log(response.jobID);
         console.log('Making Job Request..')
