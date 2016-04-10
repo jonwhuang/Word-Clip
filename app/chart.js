@@ -30,6 +30,6 @@ $scope.chartOptions = {
     total += avergeArray[i];
   }
   var avg = total / avergeArray.length
-  $scope.average = avg
+  $scope.average = Math.round(avg*100)/100
 
 });
