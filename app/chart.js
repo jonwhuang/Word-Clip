@@ -6,26 +6,29 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
     urlService.audioUrl = $scope.audioUrl;
   })
 
-  $scope.resultText = [];
+  // $scope.resultText = [];
 
   $scope.$on('$routeChangeSuccess', function () {
     testSpeechRecognition();
   });
 
   // $scope.labels = [];
-
+var labelCounter = 8;
   // $scope.data = [];
 
-  $scope.labels = [":10",":20",":30",":40",":50","1:00", "1:10","1:20","1:30"],
+  $scope.labels = [0,1,2,3,4,5,6,7],
 
   $scope.series = ["Conversation"]
 
   $scope.data = [
     [-0.8294462782412093, -0.7575233110696172, -0.3573443110696172, -0.6441003110696172, -0.7570003489696172, 0.4324313110696172, -0.6234003110696172, 0.1570003110696172,1]
   ];
-
+  $scope.resultText = [
+      'hello','hello1', 'hello2','hello3','hello4', 'hello5','hello6','hello7'
+  ];
   $scope.chartOptions = {
-    bezierCurve: false
+    bezierCurve: false,
+    showTooltips: false
   }
 
   $scope.onHover = function(points) {
@@ -34,9 +37,9 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
         // console.log(points[0].label);
       // } else {
         // console.log('No point');
-        $('#result')[0].innerHTML = points[0].label;
-        $scope.currentPoint = points[0].value.toString().slice(0,5)
         // debugger;
+        $('#result')[0].innerHTML = $scope.resultText[points[0].label];
+        $scope.currentPoint = points[0].value.toString().slice(0,5)
       };
   };
 
@@ -84,7 +87,9 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
             console.log("Received job request..now pinging sentiment...")
             console.log(response);
             var string = response.actions[0].result.document[0].content;
-            $scope.labels.push("1:40");
+            debugger;
+            $scope.labels.push(labelCounter);
+            labelCounter += 1;
             $scope.resultText.push(string);
             calculateSentiment(string);
         });
