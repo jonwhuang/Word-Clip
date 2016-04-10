@@ -1,4 +1,4 @@
-app.controller("chartCtrl", ['$scope', '$http', function ($scope, $http) {
+app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
 
   // $scope.labels = [];
 
@@ -9,18 +9,6 @@ app.controller("chartCtrl", ['$scope', '$http', function ($scope, $http) {
   $scope.data = [
     [-0.8294462782412093, -0.7575233110696172, -0.3573443110696172, -0.6441003110696172, 0.7570003489696172, -0.4324313110696172, -0.6234003110696172, 0.1570003110696172,1]
   ];
-
-  // $scope.onClick = function (points, evt) {
-  //   console.log(points, evt);
-  // };
-
-  // $scope.onHover = function(points) {
-  //   if (points.length > 0) {
-  //       console.log('Point', points[0].value);
-  //     } else {
-  //       console.log('No point');
-  //     };
-  // };
 
   $scope.chartOptions = {
     bezierCurve: false
@@ -38,6 +26,11 @@ app.controller("chartCtrl", ['$scope', '$http', function ($scope, $http) {
   $scope.testSpeechRecognition = function(){
     audio_url = document.getElementById('inputLink').value;
     console.log(audio_url);
+
+    $timeout(function(){
+      $location.path('/chart');
+    }, 3000);
+
     $.ajax({
         method: 'post',
         url: "https://api.havenondemand.com/1/api/async/recognizespeech/v1",
