@@ -1,21 +1,16 @@
-# Let's Analyze Words!!! ~ L.A.W.!!!
+# Word Clip
+
+Utilizing two of HPE Haven OnDemand's APIs, we parse through audio files in segments to provide visualizations of the speaker's sentiment, to indicate trends and even identify specific trigger words.
 
 ### The issue we're trying to solve:
-When people speak during job interviews or presentations, or give speeches, they might not realize that the wording they choose can affect others.
 
-Studies have proven that words can subconsciously affect people.
-
-[http://public.wsu.edu/~taflinge/words.html](http://public.wsu.edu/~taflinge/words.html)
+You’re in an interview, which questions are giving off a negative vibe? What specific words might be affecting your sentiment on a particular subject?
+You’re a therapist: What if you can get a visualization of your client’s emotions, broken down by time segments so you can clearly track your client’s emotional-well being as the conversation progresses from one topic to the next? How keeping track of about with keyword highlights?
 
 There is also a lot of [anecdotal evidence and self-help topics](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=how%20to%20check%20how%20your%20words%20affect%20others) that say that the choice of words also affects the speaker's perception/outlook in life.
 
-The goal of our tool is to help people: 
-
-- improve themselves by thinking of how positive or negative their word choices are, and think about better wording.
-- stop unintentionally offending others and/or giving a negative impression to others.
-
-### How it is right now:
-- People rely on feedback from others
+### Status Quo:
+- People currently rely on feedback from others
 - These feedback can be:
   - subjective
   - inexact
@@ -46,9 +41,6 @@ The goal of our tool is to help people:
 - Gary Wong
   - [GitHub](https://github.com/garywong89)
   - [LinkedIn](https://www.linkedin.com/in/garykwong2016)
-
-#### Why did we choose that name?
-Because "[talkalyzer](https://www.zhaw.ch/en/research/personen-publikationen-projekte/detailansicht-projekt/projekt/1799/)", "[wordalyzer](http://www.indiscripts.com/post/2014/06/wordalizer-15-create-word-clouds-in-indesign)", and "[speechalyzer](http://www.academia.edu/1031253/SPEECHALYZER_A_SOFTWARE_TOOL_TO_PROCESS_SPEECH_DATA)" were all taken.
 
 License
 ----
