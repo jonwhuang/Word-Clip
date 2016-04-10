@@ -17,6 +17,8 @@
 
   <link rel="stylesheet" href="style.css">
   <script src="chart.js"></script>
+  <script type="text/javascript" src="hodapi.js"></script>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -49,11 +51,15 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-  <div class='container'>
     <div ng-view>
 
+
     </div>
-  </div>
+    <div>
+      <input type="text" id="inputtext3" size="100" value="https://www.havenondemand.com/sample-content/videos/hpnext.mp4"/></br>
+      <input type="button" value="Speech Recognition" onclick="testSpeechRecognition()"/></br>
+      <div id="result"></div>
+    </div>
 
 </body>
 </html>
