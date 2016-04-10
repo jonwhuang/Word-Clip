@@ -1,4 +1,4 @@
-app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlService', function ($scope, $http, $location, $timeout, urlService) {
+app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'Upload', 'urlService', 'uploadService', function ($scope, $http, $location, $timeout, Upload,urlService, uploadService) {
 
   $scope.audioUrl = urlService.audioUrl;
 
@@ -6,28 +6,32 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
     urlService.audioUrl = $scope.audioUrl;
   })
 
-  $scope.resultText = [];
+  $scope.audioFile = uploadService.audioFile;
+
+  // $scope.resultText = [];
 
   $scope.$on('$routeChangeSuccess', function () {
     testSpeechRecognition();
   });
 
   // $scope.labels = [];
-
+  var labelCounter = 9
   // $scope.data = [];
 
-  $scope.shit = ["test","test","test","test","test","test","test","test","test","test"]
+  $scope.labels = [1,2,3,4,5,6,7,8,9],
 
-  $scope.labels = [":10",":20",":30",":40",":50","1:00", "1:10","1:20","1:30"],
   // $scope.lables.forEach
   $scope.series = ["Conversation"]
 
   $scope.data = [
-    [-0.8294462782412093, -0.7575233110696172, -0.3573443110696172, -0.6441003110696172, -0.7570003489696172, 0.4324313110696172, -0.6234003110696172, 0.1570003110696172,1]
+  [-0.8294462782412093, -0.7575233110696172, -0.3573443110696172, -0.6441003110696172, -0.7570003489696172, 0.4324313110696172, -0.6234003110696172, 0.1570003110696172,1]
   ];
-
+  $scope.resultText = [
+  'hello1','hello2', 'hello3','hello4','hello5', 'hello6','hello7','hello8', 'hello9'
+  ];
   $scope.chartOptions = {
-    bezierCurve: false
+    bezierCurve: false,
+    showTooltips: false
   }
 
   $scope.onHover = function(points) {
@@ -37,20 +41,20 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
         // console.log(points[0].label);
       // } else {
         // console.log('No point');
-        $('#result')[0].innerHTML = points[0].label;
-        $scope.currentPoint = points[0].value.toString().slice(0,5)
         // debugger;
+        $('#result')[0].innerHTML = $scope.resultText[points[0].label];
+        $scope.currentPoint = points[0].value.toString().slice(0,5)
       };
-  };
+    };
 
 
-  var avergeArray = $scope.data[0]
-  var total = 0;
-  for(var i = 0; i < avergeArray.length; i++) {
-    total += avergeArray[i];
-  }
-  var avg = total / avergeArray.length
-  $scope.average = Math.round(avg*100)/100
+    var avergeArray = $scope.data[0]
+    var total = 0;
+    for(var i = 0; i < avergeArray.length; i++) {
+      total += avergeArray[i];
+    }
+    var avg = total / avergeArray.length
+    $scope.average = Math.round(avg*100)/100
   // $scope.average = avg.toString().slice(3,5) + '%';
   if (avg >= 0){
     $scope.sentiment = 'positive';
@@ -66,31 +70,59 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
   }
 
   var testSpeechRecognition = function(){
-    console.log($scope.audioUrl);
+    var params;
 
-    $http({
-      method: 'GET',
-      url: "https://api.havenondemand.com/1/api/async/recognizespeech/v1",
-      params: {url:$scope.audioUrl, apikey:"4b212618-5f67-4f0d-b63a-45233c145396"}
-    })
+    if ($scope.audioFile !== "") {
+      console.log('found a file');
+      Upload.upload({
+        url: "https://api.havenondemand.com/1/api/async/recognizespeech/v1", 
+        data: {file:$scope.audioFile, apikey:"4b212618-5f67-4f0d-b63a-45233c145396"}
+      })
       .error(function(response){
         console.log("Error: " + response);
       })
       .success(function(response){
         console.log('Making Job Request..')
         $http({
-            method: 'GET',
-            url: "https://api.havenondemand.com/1/job/result/" + response.jobID,
-            params: {apikey: "4b212618-5f67-4f0d-b63a-45233c145396"}
+          method: 'GET',
+          url: "https://api.havenondemand.com/1/job/result/" + response.jobID,
+          params: {apikey: "4b212618-5f67-4f0d-b63a-45233c145396"}
+        })
+        .success(function(response) {
+          console.log("Audio File working hard")
+          var string = response.actions[0].result.document[0].content;
+          labelCounter += 1;
+          $scope.labels.push(labelCounter);
+          $scope.resultText.push(string);
+          calculateSentiment(string);
+        })
+      })
+    } else {
+      $http({
+        method: 'GET',
+        url: "https://api.havenondemand.com/1/api/async/recognizespeech/v1",
+        params: {url: $scope.audioUrl, apikey: "4b212618-5f67-4f0d-b63a-45233c145396"}
+      })
+      .error(function(response){
+        console.log("Error: " + response);
+      })
+      .success(function(response){
+        console.log('Making Job Request..')
+        $http({
+          method: 'GET',
+          url: "https://api.havenondemand.com/1/job/result/" + response.jobID,
+          params: {apikey: "4b212618-5f67-4f0d-b63a-45233c145396"}
         }).success(function(response){
-            console.log("Received job request..now pinging sentiment...")
-            console.log(response);
-            var string = response.actions[0].result.document[0].content;
-            $scope.labels.push("1:40");
-            $scope.resultText.push(string);
-            calculateSentiment(string);
+          console.log("Received job request..now pinging sentiment...")
+          console.log(response);
+          var string = response.actions[0].result.document[0].content;
+          labelCounter += 1;
+          $scope.labels.push(labelCounter);
+          $scope.resultText.push(string);
+          calculateSentiment(string);
         });
-    })
+      })
+    }
   }
 
   var calculateSentiment = function(string){
@@ -108,3 +140,5 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
   }
 
 }]);
+
+

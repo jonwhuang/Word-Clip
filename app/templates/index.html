@@ -1,4 +1,3 @@
-
 <form name='myAudio'>
   <label>Audio Link</label>
   <input type="text" id="inputLink" size="100" ng-model="audioUrl"/></br>
@@ -16,19 +15,7 @@
   <div class='center-block'>
   </div>
 
-  <body ng-app="fileUpload" ng-controller="MyCtrl">
-   <h4>Upload on file select</h4>
-   <button ngf-select="uploadFiles($files)" multiple 
-   accept="audio/*">Select Files</button>
-   <br>
-   <br>Files:
-   <ul>
-    <li ng-repeat="f in files" style="font:smaller">
-      {{f.name}}
-    </li>
-  </ul>
-  <span class="progress" ng-show="progress >= 0">
-    <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-  </span>
-  {{errorMsg}}
-</body>
+<form ng-controller="uploadCtrl">
+  <input type="file" ngf-select="upload($files)" accept="audio/*">Upload a file</input>
+  <button type="submit" ng-click="submit()">submit</button>
+</form>
