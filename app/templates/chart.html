@@ -8,7 +8,7 @@
         chart-click="onClick" chart-hover = "onHover">
       </canvas>
 
-      <div class="text-center">Avg:
+      <div class="text-center text-avg">Avg:
         <span ng-class="{red: average <= -0.2, green: average >= 0.2, yellow: -0.2 < average > 0.2  }">{{average}}</span>
       </div> 
     </div>
