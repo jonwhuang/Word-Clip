@@ -1,6 +1,9 @@
 function testSpeechRecognition() {
     audio_url = document.getElementById('inputLink').value;
     console.log(audio_url);
+    $('#uploadLink')[0].value = 'Add another snippet'
+    $('#uploadFile')[0].style.visibility = 'hidden'
+    $('#recordFile')[0].style.visibility = 'hidden'
     $.ajax({
         method: 'post',
         url: "https://api.havenondemand.com/1/api/async/recognizespeech/v1",
