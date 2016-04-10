@@ -1,27 +1,25 @@
-<div class="container">
-  <div class="row ng-scope" id="line-chart">
-    <div class="panel panel-default col-lg-6">
-      <div class='panel-body'>
-        <div class="chart-container">
+<div class="row ng-scope" id="line-chart">
+  <div class="panel panel-default col-lg-6">
+    <div class='panel-body'>
+      <div class="chart-container">
 
-          <form name='myAudio'>
-            <label>Audio URL</label>
-            <input type="text" id="inputLink" size="40" ng-model="audioUrl"/>
-            <input type="button" value="Upload Link" id='uploadLink' ng-model="audioUrl" class='btn btn-primary' ng-click="addMoreAudio()"/>
-          </form>
+        <form name='myAudio'>
+          <label>Audio URL</label>
+          <input type="text" id="inputLink" size="40" ng-model="audioUrl"/>
+          <input type="button" value="Upload Link" id='uploadLink' ng-model="audioUrl" class='btn btn-primary' ng-click="addMoreAudio()"/>
+        </form>
 
-          <canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-data="data" chart-result-text='resultText'
-          chart-labels="labels" chart-legend="true" chart-series="series"
-          chart-click="onClick" chart-hover = "onHover">
-          </canvas>
-          <div class="text-center text-score" ng-if="currentPoint">Score:
-            <span ng-class="{red: currentPoint <= -0.2, green: currentPoint >= 0.2, yellow: -0.2 < currentPoint > 0.2  }">{{currentPoint}}</span>
-          </div>
+        <canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-data="data" chart-result-text='resultText'
+        chart-labels="labels" chart-legend="true" chart-series="series"
+        chart-click="onClick" chart-hover = "onHover">
+        </canvas>
+        <div class="text-center text-score" ng-if="currentPoint">Score:
+          <span ng-class="{red: currentPoint <= -0.2, green: currentPoint >= 0.2, yellow: -0.2 < currentPoint > 0.2  }">{{currentPoint}}</span>
         </div>
       </div>
     </div>
-    <div class='col-lg-6'>
-      <div id="result"></div>
-    </div>
+  </div>
+  <div class='col-lg-6'>
+    <div id="result"></div>
   </div>
 </div>
