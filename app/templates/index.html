@@ -1,7 +1,16 @@
-<canvas id="line" class="chart chart-line" chart-data="data"
-  chart-labels="labels" chart-legend="true" chart-series="series"
-  chart-click="onClick" >
-</canvas>
+<div class="col-lg-6 col-sm-12 ng-scope" id="line-chart">
+  <div class="panel panel-default">
+    <div class="panel-heading"></div>
+    <div class='panel-body'>
+      <div class="chart-container">
+        <canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-data="data"
+        chart-labels="labels" chart-legend="true" chart-series="series"
+        chart-click="onClick" chart-hover = "onHover">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
   <div id='averageScore' class='img-rounded bg-success text-center'>
   {{average}} {{sentiment}}
   </div>
@@ -16,3 +25,4 @@
       <button class='btn btn-primary' id='recordFile'>Record Live</button><br>
     </div>
   </div>
+</div>

@@ -31,10 +31,10 @@ $scope.chartOptions = {
   $scope.average = avg
   if (avg>0){
     $scope.sentiment = 'positive';
-    $('#averageScore').css('background-color','')
+    $('#averageScore').css('background-color','');
   } else{
-    $scope.sentiment = 'negative'
-    $('#averageScore').css('background-color','red')
-  }
+    $scope.sentiment = 'negative';
+    $('#averageScore').css('background-color','red');
+  };
 
 });
