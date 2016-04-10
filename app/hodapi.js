@@ -1,5 +1,5 @@
 function testSpeechRecognition() {
-    audio_url = document.getElementById('inputtext3').value;
+    audio_url = document.getElementById('inputLink').value;
     console.log(audio_url);
     $.ajax({
         method: 'post',

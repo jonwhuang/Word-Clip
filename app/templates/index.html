@@ -8,11 +8,14 @@
   <div>
     <form name='myAudio'>
       <label>Audio Link</label>
-      <input type="text" id="audioLink" size="100">
-      <input type="button" id='uploadLink'class='btn btn-primary' value="Upload Link" onclick="audioExtraction()"/>
+      <input type="text" id="inputLink" size="100" value="https://www.havenondemand.com/sample-content/videos/hpnext.mp4"/></br>
+      <input type="button" id='uploadLink'class='btn btn-primary' value="Upload Link" onclick="testSpeechRecognition()"/>
     </form>
+    <div id="result"></div>
     <div class='center-block'>
       <button class='btn btn-primary' id='uploadFile'>Upload File</button>
+
+
       <button class='btn btn-primary' id='recordFile'>Record Live</button><br>
     </div>
   </div>
