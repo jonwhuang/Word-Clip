@@ -65,6 +65,9 @@ var labelCounter = 8;
 
   $scope.addMoreAudio = function(){
     testSpeechRecognition();
+    var spinner = new Spinner().spin();
+    $('.line-legend-icon')[0].appendChild(spinner.el);
+    $('.line-legend-text')[0].innerHTML = '<br><br><br>Loading';
   }
 
   var testSpeechRecognition = function(){
