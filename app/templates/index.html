@@ -1,0 +1,39 @@
+<div class="col-lg-6 col-sm-12 ng-scope" id="line-chart">
+  <div class="panel panel-default">
+    <div class="panel-heading"></div>
+    <div class='panel-body'>
+      <div class="chart-container">
+        <canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-data="data"
+        chart-labels="labels" chart-legend="true" chart-series="series"
+        chart-click="onClick" chart-hover = "onHover">
+        </canvas>
+        <div class="text-center text-score" ng-if="currentPoint">Score:
+          <span ng-class="{red: currentPoint <= -0.2, green: currentPoint >= 0.2, yellow: -0.2 < currentPoint > 0.2  }">{{currentPoint}}</span>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class='col-lg-6 col-sm-12 ng-scope'>
+  <div class="text-center text-score">Average:
+  <div id='averageScore' class='img-rounded text-center text-score'>
+    <div>
+      {{average}} {{sentiment}}
+    </div>
+  </div>
+  <div>
+    <form name='myAudio'>
+      <label>Audio Link</label>
+      <input type="text" id="inputLink" size="50" value="https://www.havenondemand.com/sample-content/videos/hpnext.mp4"/></br>
+      <input type="button" id='uploadLink'class='btn btn-primary' value="Upload Link" onclick="testSpeechRecognition()"/>
+    </form>
+      <button class='btn btn-primary' id='uploadFile'>Upload File</button>
+      <button class='btn btn-primary' id='recordFile'>Record Live</button><br>
+    </div>
+  </div>
+</div>
+<div class='col-lg-12 col-sm-12 ng-scope'>
+  <div id="result"></div>
+  <div class='center-block'>
+</div>
