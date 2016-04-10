@@ -6,8 +6,11 @@
         <canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-data="data"
         chart-labels="labels" chart-legend="true" chart-series="series"
         chart-click="onClick" chart-hover = "onHover">
-        </canvas>
-      </div>
+      </canvas>
+
+      <div class="text-center text-avg">Avg:
+        <span ng-class="{red: average <= -0.2, green: average >= 0.2, yellow: -0.2 < average > 0.2  }">{{average}}</span>
+      </div> 
     </div>
   </div>
 
@@ -24,4 +27,5 @@
   <div ng-repeat ="sentiment in sentimentValues">
     {{ sentiment }}
   </div>
+</div>
 </div>
