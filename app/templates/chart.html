@@ -7,6 +7,8 @@
         chart-labels="labels" chart-legend="true" chart-series="series"
         chart-click="onClick" chart-hover = "onHover">
         </canvas>
+
+        <div class="text-center average-color" ng-class="{red: average <= -0.2, green: average >= 0.2, yellow: -0.2 < average > 0.2  }">{{average}}</div> 
       </div>
     </div>
   </div>

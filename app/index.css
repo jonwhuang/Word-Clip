@@ -1,3 +1,15 @@
 .line-legend li .line-legend-text {
   position: relative;
 }
+
+.yellow {
+  color: #cccc00;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
