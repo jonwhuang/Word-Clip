@@ -132,6 +132,9 @@ app.controller("chartCtrl", ['$scope', '$http', 'Upload', 'urlService', function
   };
 
   $scope.upload = function(file) {
+    var spinner = new Spinner().spin();
+    $('.line-legend-icon')[0].appendChild(spinner.el);
+    $('.line-legend-text')[0].innerHTML = '<br><br><br>Loading';
     Upload.upload({
       url: "https://api.havenondemand.com/1/api/async/recognizespeech/v1",
       data: {file:file[0], apikey:"4b212618-5f67-4f0d-b63a-45233c145396"}
