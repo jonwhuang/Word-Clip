@@ -21,7 +21,7 @@ var labelCounter = 8;
   $scope.series = ["Conversation"]
 
   $scope.data = [
-    [-0.8294462782412093, -0.7575233110696172, -0.3573443110696172, -0.6441003110696172, -0.7570003489696172, 0.4324313110696172, -0.6234003110696172, 0.1570003110696172,1]
+    [0, -0.7575233110696172, -0.3573443110696172, -0.6441003110696172, -0.7570003489696172, 0.4324313110696172, -0.6234003110696172, 0.1570003110696172,1]
   ];
   $scope.resultText = [
       'hello','hello1', 'hello2','hello3','hello4', 'hello5','hello6','hello7'
@@ -87,7 +87,6 @@ var labelCounter = 8;
             console.log("Received job request..now pinging sentiment...")
             console.log(response);
             var string = response.actions[0].result.document[0].content;
-            debugger;
             $scope.labels.push(labelCounter);
             labelCounter += 1;
             $scope.resultText.push(string);
@@ -105,8 +104,6 @@ var labelCounter = 8;
       $scope.data[0].push(response.aggregate.score);
       console.log(response);
       console.log('T: ' + $scope.resultText);
-
-
 
     }).error(function(response){
       console.log("Error: " + response);
