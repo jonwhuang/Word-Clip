@@ -15,6 +15,7 @@
   <!-- <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
   <script src="index.js"></script>
   <script src="chart.js"></script>
+  <script type="text/javascript" src="hodapi.js"></script>
 </head>
 <body>
 
@@ -50,6 +51,12 @@
   <div class='container'>
     <div ng-view>
 
+
+    </div>
+    <div>
+      <input type="text" id="inputtext3" size="100" value="https://www.havenondemand.com/sample-content/videos/hpnext.mp4"/></br>
+      <input type="button" value="Speech Recognition" onclick="testSpeechRecognition()"/></br>
+      <div id="result"></div>
     </div>
   </div>
 
