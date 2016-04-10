@@ -100,9 +100,21 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
       $scope.data[0].push(response.aggregate.score);
       console.log(response);
       console.log('T: ' + $scope.resultText);
+
+
+
     }).error(function(response){
       console.log("Error: " + response);
     });
+  }
+
+
+  function boldWords(input, target) {
+    return input.replace(new RegExp('(^|\\s)(' + target + ')(\\s|$)','ig'), '$1<font color="blue"><b>$2</b></font>$3');
+  }
+
+  function redWords(input, target) {
+      return input.replace(new RegExp('(^|\\s)(' + target + ')(\\s|$)','ig'), '$1<font color="red">$2</font>$3');
   }
 
 }]);
