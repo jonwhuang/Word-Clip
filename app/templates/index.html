@@ -1,3 +1,18 @@
-<div>
-  
-</div>
+<canvas id="line" class="chart chart-line" chart-data="data"
+  chart-labels="labels" chart-legend="true" chart-series="series"
+  chart-click="onClick" >
+</canvas>
+  <div id='averageScore' class='img-rounded bg-success text-center'>
+  {{average}}
+  </div>
+  <div>
+    <form name='myAudio'>
+      <label>Audio Link</label>
+      <input type="text" id="audioLink" size="100">
+      <input type="button" id='uploadLink'class='btn btn-primary' value="Upload Link" onclick="audioExtraction()"/>
+    </form>
+    <div class='center-block'>
+      <button class='btn btn-primary' id='uploadFile'>Upload File</button>
+      <button class='btn btn-primary' id='recordFile'>Record Live</button><br>
+    </div>
+  </div>
