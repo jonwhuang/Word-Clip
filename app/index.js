@@ -20,6 +20,9 @@ app.controller('homeCtrl', ['$scope', 'urlService', function($scope, urlService)
     urlService.audioUrl = $scope.audioUrl;
   })
 
+  $scope.background = true;
+    console.log($scope.background);
+
 }]);
 
 app.service('urlService', function(){

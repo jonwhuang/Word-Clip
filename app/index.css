@@ -3,6 +3,7 @@ img.home-page {
   height: 100%;
   position: absolute;
   z-index: -15;
+  margin-top: -20px;
 }
 .line-legend li .line-legend-text {
   position: relative;

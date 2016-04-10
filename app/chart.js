@@ -6,6 +6,9 @@ app.controller("chartCtrl", ['$scope', '$http', '$location', '$timeout', 'urlSer
     urlService.audioUrl = $scope.audioUrl;
   })
 
+  $scope.background = false;
+    console.log($scope.background);
+
   // $scope.resultText = [];
 
   // $scope.$on('$routeChangeSuccess', function () {
