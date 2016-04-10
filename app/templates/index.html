@@ -1,7 +1,3 @@
-<canvas id="line" class="chart chart-line" chart-data="data"
-  chart-labels="labels" chart-legend="true" chart-series="series"
-  chart-click="onClick" >
-</canvas>
   <div id='averageScore' class='img-rounded bg-success text-center'>
   {{average}}
   </div>
@@ -9,7 +5,7 @@
     <form name='myAudio'>
       <label>Audio Link</label>
       <input type="text" id="inputLink" size="100" value="https://www.havenondemand.com/sample-content/videos/hpnext.mp4"/></br>
-      <input type="button" id='uploadLink'class='btn btn-primary' value="Upload Link" onclick="testSpeechRecognition()"/>
+      <a id='uploadLink'class='btn btn-primary' value="Upload Link" ng-click="testSpeechRecognition()" href="#/chart" />Upload Link</a>
     </form>
     <div id="result"></div>
     <div class='center-block'>
