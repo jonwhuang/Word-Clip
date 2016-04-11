@@ -23,6 +23,7 @@ There is also a lot of [anecdotal evidence and self-help topics](https://www.goo
 ### Technologies used:
 - [HPE Haven On Demand API](https://dev.havenondemand.com/)
 - [AngularJS](https://angularjs.org/)
+- spin.js
 - HTML5
 - CSS & Bootstrap
 
@@ -41,6 +42,12 @@ There is also a lot of [anecdotal evidence and self-help topics](https://www.goo
 - Gary Wong
   - [GitHub](https://github.com/garywong89)
   - [LinkedIn](https://www.linkedin.com/in/garykwong2016)
+
+### Demo
+[Live link](http://wordclip.s3-website-us-west-1.amazonaws.com/#/)
+
+![Main page](main.png)
+![Chart page](chart.png)
 
 License
 ----
