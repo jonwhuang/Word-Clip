@@ -9,7 +9,12 @@ app.config(function($routeProvider){
     when('/chart', {
       templateUrl: 'templates/chart.html',
       controller: "chartCtrl"
+    }).
+    when('/sample', {
+      templateUrl: 'templates/sample.html',
+      controller: "sampleCtrl"
     });
+
 })
 
 app.controller('homeCtrl', ['$scope', 'urlService', function($scope, urlService){
