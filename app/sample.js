@@ -9,8 +9,6 @@ app.controller("sampleCtrl", ['$scope', '$http', 'Upload', 'urlService', functio
   var labelCounter = 8;
 
   $scope.labels = [0,1,2,3,4,5,6,7],
-
-  // $scope.lables.forEach
   $scope.series = ["Conversation"]
   $scope.resultText = [" "]
   $scope.data = [
@@ -54,7 +52,7 @@ app.controller("sampleCtrl", ['$scope', '$http', 'Upload', 'urlService', functio
   var avg = total / averageArray.length
   $scope.average = Math.round(avg*100)/100
 
-  // $scope.average = avg.toString().slice(3,5) + '%';
+
   if (avg >= 0){
     $scope.sentiment = 'positive';
     $('#averageScore').css('background-color','green');
@@ -126,9 +124,9 @@ app.controller("sampleCtrl", ['$scope', '$http', 'Upload', 'urlService', functio
   };
 
   $scope.submit = function() {
-    // if ($scope.form.file.$valid && $scope.file) {
+
       $scope.upload($scope.file);
-    // }
+
   };
 
   $scope.upload = function(file) {

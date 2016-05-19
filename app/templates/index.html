@@ -1,13 +1,23 @@
 <img class="home-page" src="https://pixabay.com/static/uploads/photo/2015/12/03/09/33/microphone-1074362_960_720.jpg"/>
 <div class="container">
+    <div class='about landing-page'>
+      <label>
+      Word Clip - Easily analyze your speech sentiment and how you are perceived.<br><br>
+
+      Instructions: Upload your audio file or link.<br><br>
+      Look at the chart to see how your words is being perceived based on a
+      <br> scaled of 1 to -1. (1 being positive, -1 being negative.)
+
+
+      </label>
+    </div>
+
   <div class="text-center landing-page">
     <form name='myAudio'>
       <label>Audio Link</label>
       <input type="text" id="inputLink" size="100" ng-model="audioUrl"/></br>
-      <a href="#/chart" id='uploadLink'class='btn btn-primary'/>Upload Link</a>
+      <a href="#/sample" id='uploadLink'class='btn btn-primary'/>Upload Link</a>
     </form>
-    <div class='center-block'>
-      <button class='btn btn-primary' id='recordFile'>Record Live</button><br>
-    </div>
+
   </div>
 </div>
