@@ -10,7 +10,6 @@ app.controller("chartCtrl", ['$scope', '$http', 'Upload', 'urlService', function
 
   $scope.labels = [0,1,2,3,4,5,6,7],
 
-  // $scope.lables.forEach
   $scope.series = ["Conversation"]
   $scope.resultText = [" "]
   $scope.data = [
@@ -46,7 +45,7 @@ app.controller("chartCtrl", ['$scope', '$http', 'Upload', 'urlService', function
   var avg = total / averageArray.length
   $scope.average = Math.round(avg*100)/100
 
-  // $scope.average = avg.toString().slice(3,5) + '%';
+
   if (avg >= 0){
     $scope.sentiment = 'positive';
     $('#averageScore').css('background-color','green');
@@ -118,9 +117,9 @@ app.controller("chartCtrl", ['$scope', '$http', 'Upload', 'urlService', function
   };
 
   $scope.submit = function() {
-    // if ($scope.form.file.$valid && $scope.file) {
+
       $scope.upload($scope.file);
-    // }
+
   };
 
   $scope.upload = function(file) {
